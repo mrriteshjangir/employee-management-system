@@ -13,7 +13,7 @@ export class EmployeeService {
  constructor(private httpClient: HttpClient) { }
  
  private refreshEmployees() {
-   this.httpClient.get<Employee[]>(`${this.url}/employees`)
+   this.httpClient.get<Employee[]>(`${this.url}/api`)
      .subscribe(employees => {
        this.employees$.next(employees);
      });
@@ -25,18 +25,18 @@ export class EmployeeService {
  }
  
  getEmployee(id: string): Observable<Employee> {
-   return this.httpClient.get<Employee>(`${this.url}/employees/${id}`);
+   return this.httpClient.get<Employee>(`${this.url}/api/${id}`);
  }
  
  createEmployee(employee: Employee): Observable<string> {
-   return this.httpClient.post(`${this.url}/employees`, employee, { responseType: 'text' });
+   return this.httpClient.post(`${this.url}/api`, employee, { responseType: 'text' });
  }
  
  updateEmployee(id: string, employee: Employee): Observable<string> {
-   return this.httpClient.put(`${this.url}/employees/${id}`, employee, { responseType: 'text' });
+   return this.httpClient.put(`${this.url}/api/${id}`, employee, { responseType: 'text' });
  }
  
  deleteEmployee(id: string): Observable<string> {
-   return this.httpClient.delete(`${this.url}/employees/${id}`, { responseType: 'text' });
+   return this.httpClient.delete(`${this.url}/api/${id}`, { responseType: 'text' });
  }
 }
