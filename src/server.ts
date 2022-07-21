@@ -24,7 +24,7 @@ connectToDatabase(DB_URI)
 
         app.use('/api', empRouter);
 
-        app.listen(5200, () => { console.log(`Serve is running on port no at http://localhost:5200`) })
+        app.listen(5200, () => { console.log(`Serve is Running at http://localhost:5200`) })
     }
 
     ).catch(
